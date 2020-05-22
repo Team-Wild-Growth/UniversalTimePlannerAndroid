@@ -8,6 +8,7 @@ import com.wildgrowth.universaltimeplanner.R
 import com.wildgrowth.universaltimeplanner.clock.GPS
 import com.wildgrowth.universaltimeplanner.ui.common.BaseActivity
 import com.wildgrowth.universaltimeplanner.utils.Permission
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
     private var gps: GPS? = null
@@ -19,11 +20,5 @@ class MainActivity : BaseActivity() {
         requestPermission(Manifest.permission.ACCESS_FINE_LOCATION) {
             Toast.makeText(this, "위치 권한이 거부되었습니다.", Toast.LENGTH_LONG).show()
         }
-        //TEST
-        val gps = GPS(this)
-        val lastLocation = gps.lastLocation
-
-        Log.e("TEST", "lat = " + lastLocation.latitude+ " long = " + lastLocation.longitude);
-        //TEST
     }
 }
