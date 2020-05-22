@@ -7,12 +7,18 @@ import android.widget.TextView
 import com.wildgrowth.universaltimeplanner.R
 import com.wildgrowth.universaltimeplanner.ui.common.views.BaseView
 import kotlinx.android.synthetic.main.calendar_day_view.view.*
+import java.util.*
 
 class CalendarDayView: BaseView {
-    var day: Int = 0
+    var date: Date? = null
         set(value) {
-            field = value
-            day_text_view.setText("$value")
+            if(value != null) {
+                field = value
+                val calendar: Calendar = Calendar.getInstance()
+                calendar.time = value
+                val day: Int = calendar.get(Calendar.DATE)
+                day_text_view.text = "$day"
+            }
         }
 
 
