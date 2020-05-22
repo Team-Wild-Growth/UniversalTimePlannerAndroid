@@ -18,6 +18,8 @@ class CalendarWeekView: BaseView {
         val SATURDAY: Int = 6
     }
 
+    private var month = 0;
+
     constructor(context: Context) : super(context)
     constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet)
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
@@ -30,27 +32,36 @@ class CalendarWeekView: BaseView {
         return R.layout.calendar_week_view
     }
 
-    fun setWeek(sundayDate: Date) {
+    fun setWeek(sundayDate: Date, month: Int) {
+        this.month = month
         val calendar: Calendar = Calendar.getInstance()
         calendar.time = sundayDate
-        sunday_view.date = calendar.time
+        setDay(sunday_view, calendar)
 
         calendar.add(Calendar.DATE, 1)
-        monday_view.date = calendar.time
+        setDay(monday_view, calendar)
 
         calendar.add(Calendar.DATE, 1)
-        tuesday_view.date = calendar.time
+        setDay(tuesday_view, calendar)
 
         calendar.add(Calendar.DATE, 1)
-        wednesday_view.date = calendar.time
+        setDay(wednesday_view, calendar)
 
         calendar.add(Calendar.DATE, 1)
-        thursday_view.date = calendar.time
+        setDay(thursday_view, calendar)
 
         calendar.add(Calendar.DATE, 1)
-        friday_view.date = calendar.time
+        setDay(friday_view, calendar)
 
         calendar.add(Calendar.DATE, 1)
-        saturday_view.date = calendar.time
+        setDay(saturday_view, calendar)
+    }
+
+    private fun setDay(dayView: CalendarDayView, calendar: Calendar) {
+        dayView.date = calendar.time
+        val month = calendar.get(Calendar.MONTH)
+        if(this.month != month) {
+            dayView.setDisable()
+        }
     }
 }

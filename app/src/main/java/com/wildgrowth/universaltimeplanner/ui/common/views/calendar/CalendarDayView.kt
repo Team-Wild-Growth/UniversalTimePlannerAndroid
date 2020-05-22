@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.util.Log
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import com.wildgrowth.universaltimeplanner.R
 import com.wildgrowth.universaltimeplanner.ui.common.views.BaseView
 import kotlinx.android.synthetic.main.calendar_day_view.view.*
@@ -29,5 +30,9 @@ class CalendarDayView: BaseView {
 
     override fun initLayout(): Int {
         return R.layout.calendar_day_view
+    }
+
+    fun setDisable() {
+        day_text_view.setTextColor(ContextCompat.getColor(context, R.color.color_disabled_text))
     }
 }

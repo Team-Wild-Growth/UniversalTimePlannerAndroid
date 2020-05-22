@@ -21,5 +21,6 @@ class MainActivity : BaseActivity() {
         requestPermission(Manifest.permission.ACCESS_FINE_LOCATION) {
             Toast.makeText(this, "위치 권한이 거부되었습니다.", Toast.LENGTH_LONG).show()
         }
+        calendar_view.setCalendar(2020, 5)
     }
 }

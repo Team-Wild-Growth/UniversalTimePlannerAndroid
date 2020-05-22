@@ -6,5 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.MainActivity">
+    <com.wildgrowth.universaltimeplanner.ui.common.views.calendar.CalendarMonthView
+        android:id="@+id/calendar_view"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"/>
 
 </LinearLayout>
