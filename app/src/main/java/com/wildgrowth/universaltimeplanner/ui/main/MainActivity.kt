@@ -9,6 +9,7 @@ import com.wildgrowth.universaltimeplanner.clock.GPS
 import com.wildgrowth.universaltimeplanner.ui.common.BaseActivity
 import com.wildgrowth.universaltimeplanner.utils.Permission
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 class MainActivity : BaseActivity() {
     private var gps: GPS? = null
