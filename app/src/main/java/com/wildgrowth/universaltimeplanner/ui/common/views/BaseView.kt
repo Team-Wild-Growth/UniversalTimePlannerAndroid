@@ -22,7 +22,7 @@ abstract class BaseView : LinearLayout {
 
     protected abstract fun initLayout(): Int
 
-    protected fun onCreate() {
+    protected open fun onCreate() {
         setContentView(initLayout())
     }
 
