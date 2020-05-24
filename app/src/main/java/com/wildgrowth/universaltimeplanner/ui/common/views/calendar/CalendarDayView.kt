@@ -2,8 +2,6 @@ package com.wildgrowth.universaltimeplanner.ui.common.views.calendar
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.wildgrowth.universaltimeplanner.R
 import com.wildgrowth.universaltimeplanner.ui.common.views.BaseView
@@ -34,5 +32,9 @@ class CalendarDayView: BaseView {
 
     fun setDisable() {
         day_text_view.setTextColor(ContextCompat.getColor(context, R.color.color_disabled_text))
+    }
+
+    fun setEnable() {
+        day_text_view.setTextColor(ContextCompat.getColor(context, R.color.black))
     }
 }
