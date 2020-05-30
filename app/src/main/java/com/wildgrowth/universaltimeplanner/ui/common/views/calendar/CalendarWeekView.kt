@@ -34,6 +34,7 @@ class CalendarWeekView: BaseView {
         val calendar: Calendar = Calendar.getInstance()
         calendar.time = sundayDate
         setDay(sunday_view, calendar)
+        sunday_view.setHolyday()
 
         calendar.add(Calendar.DATE, 1)
         setDay(monday_view, calendar)
@@ -52,6 +53,7 @@ class CalendarWeekView: BaseView {
 
         calendar.add(Calendar.DATE, 1)
         setDay(saturday_view, calendar)
+        saturday_view.setSaturday()
     }
 
     private fun setDay(dateView: CalendarDateView, calendar: Calendar) {

@@ -1,10 +1,12 @@
 package com.wildgrowth.universaltimeplanner.ui.common.views.calendar
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.wildgrowth.universaltimeplanner.R
+import com.wildgrowth.universaltimeplanner.ui.common.Utils
 import com.wildgrowth.universaltimeplanner.ui.common.views.BaseView
 import kotlinx.android.synthetic.main.calendar_date_view.view.*
 import java.util.*
@@ -13,6 +15,9 @@ class CalendarDateView: BaseView {
     interface OnDateClickListener {
         fun onDateClick(date: Date)
     }
+
+    private var baseColor: Int = Color.parseColor("#000000")
+    private var isDisabled: Boolean = false
 
     var onDateClickListener: OnDateClickListener? = null
 
@@ -35,6 +40,8 @@ class CalendarDateView: BaseView {
 
     override fun onCreate() {
         super.onCreate()
+        baseColor = item_view.getTextColor()
+        isDisabled = false
         setOnClickListener {
             date?.let {
                 onDateClickListener?.onDateClick(it)
@@ -52,11 +59,13 @@ class CalendarDateView: BaseView {
     }
 
     fun setDisable() {
-        item_view.setTextColor(ContextCompat.getColor(context, R.color.color_disabled_text))
+        isDisabled = true
+        setColor()
     }
 
     fun setEnable() {
-        item_view.setTextColor(ContextCompat.getColor(context, R.color.black))
+        isDisabled = false
+        setColor()
     }
 
     fun selectDate(date: Date) {
@@ -72,6 +81,25 @@ class CalendarDateView: BaseView {
             } else {
                 marker.visibility = View.GONE
             }
+        }
+    }
+
+    fun setSaturday() {
+        baseColor = Color.parseColor("#0000ff")
+        setColor()
+    }
+
+    fun setHolyday() {
+        baseColor = Color.parseColor("#ff0000")
+        setColor()
+    }
+
+    fun setColor() {
+        if(isDisabled) {
+            item_view.setTextColor(
+                Utils.mixColor(baseColor, ContextCompat.getColor(context, R.color.color_disabled_text)))
+        } else {
+            item_view.setTextColor(baseColor)
         }
     }
 }
