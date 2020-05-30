@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import androidx.viewpager.widget.PagerAdapter
 import com.wildgrowth.universaltimeplanner.App
+import com.wildgrowth.universaltimeplanner.R
 import java.util.*
 
 class CalendarPagerAdapter: PagerAdapter() {
@@ -30,6 +31,7 @@ class CalendarPagerAdapter: PagerAdapter() {
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val monthView = CalendarMonthView(App.getContext())
+        monthView.setTag(R.string.test, "TEST")
         val params: ViewGroup.LayoutParams = ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
         monthView.layoutParams = params
         val calendar: Calendar = Calendar.getInstance()
