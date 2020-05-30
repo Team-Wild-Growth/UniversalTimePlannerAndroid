@@ -8,6 +8,6 @@
     <com.wildgrowth.universaltimeplanner.ui.common.views.calendar.CalendarView
         android:id="@+id/calendar_view"
         android:layout_width="match_parent"
-        android:layout_height="400dp"/>
+        android:layout_height="350dp"/>
 
 </LinearLayout>

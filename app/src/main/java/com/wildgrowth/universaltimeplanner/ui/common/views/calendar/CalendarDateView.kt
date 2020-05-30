@@ -23,7 +23,7 @@ class CalendarDateView: BaseView {
                 val calendar: Calendar = Calendar.getInstance()
                 calendar.time = value
                 val day: Int = calendar.get(Calendar.DATE)
-                day_text_view.text = "$day"
+                item_view.setText("$day")
             }
         }
 
@@ -52,11 +52,11 @@ class CalendarDateView: BaseView {
     }
 
     fun setDisable() {
-        day_text_view.setTextColor(ContextCompat.getColor(context, R.color.color_disabled_text))
+        item_view.setTextColor(ContextCompat.getColor(context, R.color.color_disabled_text))
     }
 
     fun setEnable() {
-        day_text_view.setTextColor(ContextCompat.getColor(context, R.color.black))
+        item_view.setTextColor(ContextCompat.getColor(context, R.color.black))
     }
 
     fun selectDate(date: Date) {
