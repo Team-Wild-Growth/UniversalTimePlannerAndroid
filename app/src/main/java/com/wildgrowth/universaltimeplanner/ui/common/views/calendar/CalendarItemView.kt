@@ -23,4 +23,8 @@ class CalendarItemView : BaseView {
     fun setText(text: String) {
         text_view.text = text
     }
+
+    fun getTextColor(): Int {
+        return text_view.currentTextColor
+    }
 }
