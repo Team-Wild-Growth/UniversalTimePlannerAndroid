@@ -31,7 +31,6 @@ class CalendarPagerAdapter: PagerAdapter() {
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val monthView = CalendarMonthView(App.getContext())
-        monthView.setTag(R.string.test, "TEST")
         val params: ViewGroup.LayoutParams = ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
         monthView.layoutParams = params
         val calendar: Calendar = Calendar.getInstance()
