@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import androidx.viewpager.widget.PagerAdapter
 import com.wildgrowth.universaltimeplanner.App
-import com.wildgrowth.universaltimeplanner.R
 import java.util.*
 
 class CalendarPagerAdapter: PagerAdapter() {
@@ -16,10 +15,11 @@ class CalendarPagerAdapter: PagerAdapter() {
         }
 
     companion object {
-        const val START_POSITION: Int = Int.MAX_VALUE / 2
+        const val START_POSITION: Int = (Int.MAX_VALUE / 2)
     }
 
-    private val date: Date = Date()
+    private var date: Date = Date()
+    private var selectedDate: Date = Date()
 
     override fun isViewFromObject(view: View, obj: Any): Boolean {
         return view == obj as CalendarMonthView
@@ -31,13 +31,14 @@ class CalendarPagerAdapter: PagerAdapter() {
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val monthView = CalendarMonthView(App.getContext())
+        monthView.tag = position
         val params: ViewGroup.LayoutParams = ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
         monthView.layoutParams = params
         val calendar: Calendar = Calendar.getInstance()
         calendar.time = date
         calendar.add(Calendar.MONTH, position - START_POSITION)
         monthView.year = calendar.get(Calendar.YEAR)
-        monthView.month = calendar.get(Calendar.MONTH)
+        monthView.month = calendar.get(Calendar.MONTH) + 1
         onDateClickListener?.let {
             monthView.addOnDateClickListener(it)
         }
@@ -49,4 +50,9 @@ class CalendarPagerAdapter: PagerAdapter() {
     override fun destroyItem(container: ViewGroup, position: Int, obj: Any) {
         container.removeView(obj as View)
     }
+
+    fun setSelectedDate(date: Date) {
+        this.selectedDate = date
+    }
+
 }

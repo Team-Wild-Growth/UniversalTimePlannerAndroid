@@ -3,10 +3,7 @@ package com.wildgrowth.universaltimeplanner.ui.common.views.calendar
 import android.content.Context
 import android.util.AttributeSet
 import android.util.Log
-import android.view.View
-import android.view.View.OnClickListener
-import android.view.ViewGroup
-import androidx.core.view.children
+import androidx.viewpager.widget.ViewPager
 import com.wildgrowth.universaltimeplanner.R
 import com.wildgrowth.universaltimeplanner.ui.common.views.BaseView
 import kotlinx.android.synthetic.main.calendar_view.view.*
@@ -37,17 +34,32 @@ class CalendarView: BaseView {
 
     override fun onCreate() {
         super.onCreate()
-        selectedDate = Date()
         adapter = CalendarPagerAdapter()
         view_pager.adapter = adapter
         view_pager.currentItem = CalendarPagerAdapter.START_POSITION
+        view_pager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener{
+            override fun onPageScrollStateChanged(state: Int) {
+            }
+
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+            }
+
+            override fun onPageSelected(position: Int) {
+                view_pager.findViewWithTag<CalendarMonthView>(position).selectDate(selectedDate)
+            }
+        })
+        view_pager.post({
+            selectDate(Date())
+        })
     }
 
     fun selectDate(date: Date) {
         selectedDate = date
-        for(i in 0 until view_pager.childCount) {
-            val monthView = view_pager.getChildAt(i) as CalendarMonthView
-            monthView.selectDate(date)
-        }
+        val monthView = view_pager.findViewWithTag(view_pager.currentItem) as CalendarMonthView
+        monthView.selectDate(selectedDate)
     }
 }
