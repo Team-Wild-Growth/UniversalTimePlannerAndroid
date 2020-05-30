@@ -24,7 +24,6 @@ class MainActivity : BaseActivity() {
         calendar_view.setOnDateClickListener {
             val calendar: Calendar = Calendar.getInstance()
             calendar.time = it
-            Log.e("TEST", calendar.get(Calendar.DATE).toString())
         }
     }
 }

@@ -40,7 +40,7 @@ class CalendarDateView: BaseView {
                 onDateClickListener?.onDateClick(it)
             }
         }
-        selected_view.visibility = View.GONE;
+        marker.visibility = View.GONE;
     }
 
     fun setOnDateClickListeners(listener: OnDateClickListener) {
@@ -61,9 +61,9 @@ class CalendarDateView: BaseView {
 
     fun selectDate(date: Date) {
         if(date == this.date) {
-            selected_view.visibility = View.VISIBLE
+            marker.visibility = View.VISIBLE
         } else {
-            selected_view.visibility = View.GONE
+            marker.visibility = View.GONE
         }
     }
 }
