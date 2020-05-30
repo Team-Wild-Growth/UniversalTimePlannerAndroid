@@ -40,7 +40,7 @@ class CalendarDateView: BaseView {
                 onDateClickListener?.onDateClick(it)
             }
         }
-        marker.visibility = View.GONE;
+        marker.visibility = View.GONE
     }
 
     fun setOnDateClickListeners(listener: OnDateClickListener) {
@@ -60,10 +60,18 @@ class CalendarDateView: BaseView {
     }
 
     fun selectDate(date: Date) {
-        if(date == this.date) {
-            marker.visibility = View.VISIBLE
-        } else {
-            marker.visibility = View.GONE
+        if(this.date != null) {
+            val c1: Calendar = Calendar.getInstance()
+            val c2: Calendar = Calendar.getInstance()
+            c1.time = date
+            c2.time = this.date
+            if (c1.get(Calendar.YEAR) == c2.get(Calendar.YEAR)
+                && c1.get(Calendar.MONTH) == c2.get(Calendar.MONTH)
+                && c1.get(Calendar.DATE) == c2.get(Calendar.DATE)){
+                marker.visibility = View.VISIBLE
+            } else {
+                marker.visibility = View.GONE
+            }
         }
     }
 }
