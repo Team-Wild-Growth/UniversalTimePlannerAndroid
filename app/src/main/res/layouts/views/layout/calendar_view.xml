@@ -5,6 +5,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <com.wildgrowth.universaltimeplanner.ui.common.views.calendar.CalendarDayOfWeekView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
