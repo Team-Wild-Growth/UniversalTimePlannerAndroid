@@ -1,13 +1,19 @@
 package com.wildgrowth.universaltimeplanner.ui.common.views.calendar
 
-import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import androidx.viewpager.widget.PagerAdapter
+import com.wildgrowth.universaltimeplanner.App
 import java.util.*
 
-class CalendarPagerAdapter(val context: Context): PagerAdapter() {
+class CalendarPagerAdapter: PagerAdapter() {
+    var onDateClickListener: CalendarDateView.OnDateClickListener? = null
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+
     companion object {
         const val START_POSITION: Int = Int.MAX_VALUE / 2
     }
@@ -23,13 +29,18 @@ class CalendarPagerAdapter(val context: Context): PagerAdapter() {
     }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val monthView = CalendarMonthView(context)
+        val monthView = CalendarMonthView(App.getContext())
         val params: ViewGroup.LayoutParams = ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
         monthView.layoutParams = params
         val calendar: Calendar = Calendar.getInstance()
         calendar.time = date
         calendar.add(Calendar.MONTH, position - START_POSITION)
-        monthView.setCalendar(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH))
+        monthView.year = calendar.get(Calendar.YEAR)
+        monthView.month = calendar.get(Calendar.MONTH)
+        onDateClickListener?.let {
+            monthView.addOnDateClickListener(it)
+        }
+        monthView.update()
         container.addView(monthView)
         return monthView
     }

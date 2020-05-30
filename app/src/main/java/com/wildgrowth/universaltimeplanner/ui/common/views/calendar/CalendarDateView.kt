@@ -8,7 +8,13 @@ import com.wildgrowth.universaltimeplanner.ui.common.views.BaseView
 import kotlinx.android.synthetic.main.calendar_day_view.view.*
 import java.util.*
 
-class CalendarDayView: BaseView {
+class CalendarDateView: BaseView {
+    interface OnDateClickListener {
+        fun onDateClick(date: Date)
+    }
+
+    var onDateClickListener: OnDateClickListener? = null
+
     var date: Date? = null
         set(value) {
             if(value != null) {
@@ -25,6 +31,19 @@ class CalendarDayView: BaseView {
     constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet)
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int)
             : super(context, attrs, defStyleAttr)
+
+    override fun onCreate() {
+        super.onCreate()
+        setOnClickListener {
+            date?.let {
+                onDateClickListener?.onDateClick(it)
+            }
+        }
+    }
+
+    fun setOnDateClickListeners(listener: OnDateClickListener) {
+        this.onDateClickListener = listener
+    }
 
     override fun initLayout(): Int {
         return R.layout.calendar_day_view
