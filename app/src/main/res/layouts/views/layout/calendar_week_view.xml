@@ -3,37 +3,37 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.wildgrowth.universaltimeplanner.ui.common.views.calendar.CalendarDayView
+    <com.wildgrowth.universaltimeplanner.ui.common.views.calendar.CalendarDateView
         android:id="@+id/sunday_view"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="match_parent"/>
-    <com.wildgrowth.universaltimeplanner.ui.common.views.calendar.CalendarDayView
+    <com.wildgrowth.universaltimeplanner.ui.common.views.calendar.CalendarDateView
         android:id="@+id/monday_view"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="match_parent"/>
-    <com.wildgrowth.universaltimeplanner.ui.common.views.calendar.CalendarDayView
+    <com.wildgrowth.universaltimeplanner.ui.common.views.calendar.CalendarDateView
         android:id="@+id/tuesday_view"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="match_parent"/>
-    <com.wildgrowth.universaltimeplanner.ui.common.views.calendar.CalendarDayView
+    <com.wildgrowth.universaltimeplanner.ui.common.views.calendar.CalendarDateView
         android:id="@+id/wednesday_view"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="match_parent"/>
-    <com.wildgrowth.universaltimeplanner.ui.common.views.calendar.CalendarDayView
+    <com.wildgrowth.universaltimeplanner.ui.common.views.calendar.CalendarDateView
         android:id="@+id/thursday_view"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="match_parent"/>
-    <com.wildgrowth.universaltimeplanner.ui.common.views.calendar.CalendarDayView
+    <com.wildgrowth.universaltimeplanner.ui.common.views.calendar.CalendarDateView
         android:id="@+id/friday_view"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="match_parent"/>
-    <com.wildgrowth.universaltimeplanner.ui.common.views.calendar.CalendarDayView
+    <com.wildgrowth.universaltimeplanner.ui.common.views.calendar.CalendarDateView
         android:id="@+id/saturday_view"
         android:layout_weight="1"
         android:layout_width="0dp"

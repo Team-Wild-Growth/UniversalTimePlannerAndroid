@@ -19,6 +19,16 @@ class CalendarWeekView: BaseView {
         return R.layout.calendar_week_view
     }
 
+    fun setOnDateClickListener(onDateClickListener: CalendarDateView.OnDateClickListener) {
+        sunday_view.setOnDateClickListeners(onDateClickListener)
+        monday_view.setOnDateClickListeners(onDateClickListener)
+        tuesday_view.setOnDateClickListeners(onDateClickListener)
+        wednesday_view.setOnDateClickListeners(onDateClickListener)
+        thursday_view.setOnDateClickListeners(onDateClickListener)
+        friday_view.setOnDateClickListeners(onDateClickListener)
+        saturday_view.setOnDateClickListeners(onDateClickListener)
+    }
+
     fun setWeek(sundayDate: Date, month: Int) {
         this.month = month
         val calendar: Calendar = Calendar.getInstance()
@@ -44,13 +54,13 @@ class CalendarWeekView: BaseView {
         setDay(saturday_view, calendar)
     }
 
-    private fun setDay(dayView: CalendarDayView, calendar: Calendar) {
-        dayView.date = calendar.time
+    private fun setDay(dateView: CalendarDateView, calendar: Calendar) {
+        dateView.date = calendar.time
         val month = calendar.get(Calendar.MONTH)
         if(this.month != month) {
-            dayView.setDisable()
+            dateView.setDisable()
         } else {
-            dayView.setEnable()
+            dateView.setEnable()
         }
     }
 }

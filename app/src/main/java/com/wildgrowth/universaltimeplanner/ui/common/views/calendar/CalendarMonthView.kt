@@ -8,6 +8,12 @@ import kotlinx.android.synthetic.main.calendar_month_view.view.*
 import java.util.*
 
 class CalendarMonthView: BaseView {
+    var month: Int = 0
+        set(value) {
+            field = value - 1
+        }
+    var year: Int = 0
+
     constructor(context: Context) : super(context)
     constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet)
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int)
@@ -17,34 +23,36 @@ class CalendarMonthView: BaseView {
         return R.layout.calendar_month_view
     }
 
-    fun setCalendar(year: Int, _month: Int) {
-        var month = _month - 1
+    fun addOnDateClickListener(onClickListener: CalendarDateView.OnDateClickListener) {
+        first_week_view.setOnDateClickListener(onClickListener)
+        second_week_view.setOnDateClickListener(onClickListener)
+        third_week_view.setOnDateClickListener(onClickListener)
+        fourth_week_view.setOnDateClickListener(onClickListener)
+        fifth_week_view.setOnDateClickListener(onClickListener)
+        sixth_week_view.setOnDateClickListener(onClickListener)
+    }
+
+    fun update() {
         val calendar: Calendar = Calendar.getInstance()
 
         calendar.set(year, month, 1)
         val firstDayOfWeek: Int = calendar.get(Calendar.DAY_OF_WEEK)
         calendar.add(Calendar.DATE, (firstDayOfWeek - 1) * -1)
-        val firstWeekSunday: Date = calendar.time
-        first_week_view.setWeek(firstWeekSunday, month)
+        first_week_view.setWeek(calendar.time, month)
 
         calendar.add(Calendar.DATE, 7)
-        val secondWeekSunday: Date = calendar.time
-        second_week_view.setWeek(secondWeekSunday, month)
+        second_week_view.setWeek(calendar.time, month)
 
         calendar.add(Calendar.DATE, 7)
-        val thirdWeekSunday: Date = calendar.time
-        third_week_view.setWeek(thirdWeekSunday, month)
+        third_week_view.setWeek(calendar.time, month)
 
         calendar.add(Calendar.DATE, 7)
-        val fourthWeekSunday: Date = calendar.time
-        fourth_week_view.setWeek(fourthWeekSunday, month)
+        fourth_week_view.setWeek(calendar.time, month)
 
         calendar.add(Calendar.DATE, 7)
-        val fifthWeekSunday: Date = calendar.time
-        fifth_week_view.setWeek(fifthWeekSunday, month)
+        fifth_week_view.setWeek(calendar.time, month)
 
         calendar.add(Calendar.DATE, 7)
-        val sixthWeekSunday: Date = calendar.time
-        sixth_week_view.setWeek(sixthWeekSunday, month)
+        sixth_week_view.setWeek(calendar.time, month)
     }
 }
