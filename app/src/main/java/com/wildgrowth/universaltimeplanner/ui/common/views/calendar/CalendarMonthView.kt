@@ -55,4 +55,13 @@ class CalendarMonthView: BaseView {
         calendar.add(Calendar.DATE, 7)
         sixth_week_view.setWeek(calendar.time, month)
     }
+
+    fun selectDate(date: Date) {
+        first_week_view.selectDate(date);
+        second_week_view.selectDate(date);
+        third_week_view.selectDate(date);
+        fourth_week_view.selectDate(date);
+        fifth_week_view.selectDate(date);
+        sixth_week_view.selectDate(date);
+    }
 }

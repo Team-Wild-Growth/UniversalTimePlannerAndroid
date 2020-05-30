@@ -63,4 +63,14 @@ class CalendarWeekView: BaseView {
             dateView.setEnable()
         }
     }
+
+    fun selectDate(date: Date) {
+        sunday_view.selectDate(date)
+        monday_view.selectDate(date)
+        tuesday_view.selectDate(date)
+        wednesday_view.selectDate(date)
+        thursday_view.selectDate(date)
+        friday_view.selectDate(date)
+        saturday_view.selectDate(date)
+    }
 }
